@@ -15,7 +15,7 @@ Farmers make big decisions with very little information: when to plant, what to 
 | Predictive climate analytics | Estimates the risk of flood, deluge and drought from rainfall, temperature, humidity, soil moisture and river levels with a Random Forest model, and explains the reason behind each prediction. |
 | Soil health and crop suitability | Shows soil health and moisture information and suggests suitable crops and fertilisers. |
 | AI plant disease detection | Upload a photo of a leaf and a deep learning model identifies the disease (corn common rust, potato blight or tomato bacterial spot) with a treatment note. |
-| Land utilisation | A marketplace where landowners can list unused fertile land for lease, so it can be farmed. |
+| Land utilisation | Search and filter available farmland by location and fertility, so unused fertile land can be found and put to use. |
 | English and Bangla | Switch the whole site between the two languages with one click. |
 
 ## Built with
@@ -31,7 +31,7 @@ index.html                          home page
 predictive-climate-analytics.html   climate risk dashboard
 soil-health-assessment.html         soil health and crop suitability
 plant-disease-detection.html        upload a leaf image for diagnosis
-land-utilization.html               land leasing marketplace
+land-utilization.html               search for available farmland
 about.html, contact.html, login.html
 css/, js/, images/                  styles, scripts (including the language switcher) and images
 backend/
@@ -68,7 +68,7 @@ Both APIs use port 5000 by default, so run one at a time.
 
 ## Notes
 
-FarmBuddy was built in a weekend for a hackathon. The weather dataset and the land listings are samples for the demo, and the disease model covers three diseases.
+FarmBuddy was built in a weekend for a hackathon. The weather dataset, soil readings and land listings are samples for the demo, and the disease model covers three diseases.
 
 ## Team Proborton
 
