@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
+
 import numpy as np
 import cv2
 from keras.models import load_model
@@ -8,7 +10,8 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS
 
 # Load the model
-model = load_model('plant_disease_model.h5')
+BASE = os.path.dirname(os.path.abspath(__file__))
+model = load_model(os.path.join(BASE, 'models', 'plant_disease_model.h5'))
 
 # Class names
 CLASS_NAMES = ('Corn-Common_rust', 'Potato-Barly blight', 'Tomato-Bacterial_spot')

@@ -4,7 +4,9 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import os
 
-app = Flask(__name__)
+BASE = os.path.dirname(os.path.abspath(__file__))
+# the web pages live one folder up
+app = Flask(__name__, template_folder=os.path.join(BASE, '..'), static_folder=os.path.join(BASE, '..'), static_url_path='')
 
 @app.route('/')
 def home():
@@ -13,7 +15,7 @@ def home():
 @app.route('/run_analysis', methods=['POST'])
 def run_analysis():
     # Load your dataset
-    data = pd.read_csv('weather_data.csv')
+    data = pd.read_csv(os.path.join(BASE, 'data', 'weather_data.csv'))
     
     # Define features and label
     features = ['rainfall (mm)', 'temperature (°C)', 'humidity (%)', 'soil_moisture (%)', 'river_levels (m)']

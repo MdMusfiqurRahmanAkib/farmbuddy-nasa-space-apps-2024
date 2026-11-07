@@ -1,76 +1,79 @@
 # FarmBuddy
 
-FarmBuddy is an innovative web service designed to help farmers leverage NASA Earth Observation Data and AI technology to improve agricultural productivity, sustainability, and economic growth. This project includes functionalities for predictive climate analytics, soil health assessment, pest control, and land utilization.
+Data-driven farming support with NASA Earth observation data and AI.
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [File Structure](#file-structure)
-- [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [License](#license)
+FarmBuddy is the project our team, **Team Proborton**, built for the **NASA Space Apps Challenge 2024**, where it received NASA's **Galactic Problem Solver** recognition.
 
-## Overview
+Farmers make big decisions with very little information: when to plant, what to grow, how to deal with a sick crop, and what to do with land that sits unused. FarmBuddy brings weather, soil and crop information together in one place, so those decisions can be based on data. The site works in both English and Bangla.
 
-FarmBuddy provides farmers with the tools and insights needed to enhance productivity and sustainability. Key functionalities include real-time weather forecasts, soil health assessments, pest control integration, and land utilization support. The platform is built with a focus on usability and responsiveness to ensure a smooth experience across devices.
+**Live site:** https://mdmusfiqurrahmanakib.github.io/farmbuddy-nasa-space-apps-2024/
 
 ## Features
 
-1. **Predictive Climate Analytics**
-   - Real-time analysis and forecasts of natural disasters using NASA’s SMAP and Earthdata.
-   - Visual dashboard for weather forecasts and risk analysis.
-   - Alerts for impending natural disasters.
+| Feature | What it does |
+| --- | --- |
+| Predictive climate analytics | Estimates the risk of flood, deluge and drought from rainfall, temperature, humidity, soil moisture and river levels with a Random Forest model, and explains the reason behind each prediction. |
+| Soil health and crop suitability | Shows soil health and moisture information and suggests suitable crops and fertilisers. |
+| AI plant disease detection | Upload a photo of a leaf and a deep learning model identifies the disease (corn common rust, potato blight or tomato bacterial spot) with a treatment note. |
+| Land utilisation | A marketplace where landowners can list unused fertile land for lease, so it can be farmed. |
+| English and Bangla | Switch the whole site between the two languages with one click. |
 
-2. **Soil Health and Crop Suitability Assessment**
-   - Real-time monitoring of soil health and moisture.
-   - Recommendations for suitable crops and fertilizers based on soil data.
-   - Interactive map showing soil conditions across different regions.
+## Built with
 
-3. **AI-Driven Plant Disease Detection**
-   - AI-based detection of plant diseases from uploaded images.
-   - Detailed reports on disease types and suggested treatments.
+- **Frontend:** HTML, Tailwind CSS, JavaScript, Chart.js, Font Awesome
+- **Backend:** Python, Flask, TensorFlow and Keras, OpenCV, scikit-learn, pandas
+- **Data:** NASA SMAP soil moisture and NASA Earthdata
 
-4. **Land Utilization and Economic Growth**
-   - Marketplace for landowners to list unused fertile land.
-   - Search and filter options for finding land based on location and fertility.
-   - Secure system for leasing or renting land.
+## Project structure
 
-## Technologies Used
+```
+index.html                          home page
+predictive-climate-analytics.html   climate risk dashboard
+soil-health-assessment.html         soil health and crop suitability
+plant-disease-detection.html        upload a leaf image for diagnosis
+land-utilization.html               land leasing marketplace
+about.html, contact.html, login.html
+css/, js/, images/                  styles, scripts (including the language switcher) and images
+backend/
+    plant_disease_api.py            Flask API for disease detection (POST /predict)
+    climate_analytics_api.py        Flask API for climate risk analysis (POST /run_analysis)
+    models/plant_disease_model.h5   trained disease detection model
+    data/weather_data.csv           sample weather and soil data
+    requirements.txt
+```
 
-- **Frontend:**
-  - HTML
-  - CSS
-  - Tailwind CSS
-  - JavaScript
-  - Chart.js
-  - FontAwesome
+## How to run
 
-- **Backend (Planned):**
-  - PHP (Optional)
-  - Integration with NASA Earth Observation Data APIs
+**Website:** open `index.html` in a browser, or use the live site above.
 
-## Getting Started
+**Plant disease detection** needs the Python backend running on your computer:
 
-1. **Clone the Repository:**
+```bash
+pip install -r backend/requirements.txt
+```
 
-   ```bash
-   git clone https://github.com/yourusername/farmbuddy.git
+```bash
+python backend/plant_disease_api.py
+```
 
-2. **Navigate to the Project Directory:**
-   ```bash
-   cd farmbuddy
-4. **Open the Project in a Browser:**
-   Open index.html in your preferred web browser to view the application.
-   
-## Contributing
-We welcome contributions to improve FarmBuddy! To contribute:
+The API starts at http://127.0.0.1:5000, which is the address the disease detection page calls.
 
-Fork the repository.
-1. Create a new branch (git checkout -b feature/YourFeature).
-3. Commit your changes (git commit -am 'Add new feature').
-4. Push to the branch (git push origin feature/YourFeature).
-5. Create a new Pull Request.
-   
-##  License
-This project is licensed under the MIT License - see the LICENSE file for details.
+**Climate risk analysis** has its own API:
+
+```bash
+python backend/climate_analytics_api.py
+```
+
+Both APIs use port 5000 by default, so run one at a time.
+
+## Notes
+
+FarmBuddy was built in a weekend for a hackathon. The weather dataset and the land listings are samples for the demo, and the disease model covers three diseases.
+
+## Team Proborton
+
+- Md. Musfiqur Rahman Akib
+- Samah Feroz ([@SamahFeroz](https://github.com/SamahFeroz))
+- Tanvir Joy ([@thisistanvirjoy](https://github.com/thisistanvirjoy))
+
+The original hackathon repository is [SamahFeroz/Team-Proborton](https://github.com/SamahFeroz/Team-Proborton). This copy keeps its full commit history and organises the files for easier use.
